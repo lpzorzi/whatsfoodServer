@@ -69,9 +69,11 @@ public class JDBCGerenteDAO implements GerenteDAO {
             String SQL = "SELECT * FROM gerente WHERE gerente_login = ?;";
             PreparedStatement ps = connection.prepareStatement(SQL);
             ps.setString( 1, login);
+            System.out.println("BUSCOU");
             ResultSet rs = ps.executeQuery();
             gerente = new Gerente();
             if(rs.next()){
+                
                 gerente.setLogin(rs.getString("gerente_login"));
                 gerente.setSenha(rs.getString("gerente_senha"));
                 gerente.setID(rs.getString("gerente_id"));

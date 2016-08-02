@@ -77,14 +77,14 @@ public class teste {
         }
         */
 
-        // TESTE GERENTE
+        /*/ TESTE GERENTE
         Gerente g = new Gerente("0", "loging", "senhag");
         JDBCGerenteDAO JDBCg = new JDBCGerenteDAO();
         //JDBCg.inserir(g);
         g = new Gerente("0", "loging2", "senhag2");
         //JDBCg.inserir(g);
         g = JDBCg.buscar("loging");
-        
+        */
         
         /* TESTE COMENTARIO         -------OK
         Comentario c = new Comentario("0", "ALOHA", "1", "1");
@@ -127,7 +127,7 @@ public class teste {
             System.out.println("VAZIO");
         }
         */
-        /* TESTAR DENUNCIA
+        // TESTAR DENUNCIA
         Denuncia d = new Denuncia("0","1","1");
         JDBCDenunciaDAO JDBCd = new JDBCDenunciaDAO();
         JDBCd.inserir(d);
@@ -137,7 +137,7 @@ public class teste {
             System.out.println("Cliente ID: " + denuncia.getClienteID());
             System.out.println("Post ID: " + denuncia.getPostID());
         }
-        */
+        
     }
     
 }

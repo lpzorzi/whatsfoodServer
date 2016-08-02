@@ -1,18 +1,15 @@
 package com.whatsfood.JSON;
 
-import com.whatsFood.data.Cliente;
-import com.whatsfood.DAO.JDBCClienteDAO;
 import java.io.IOException;
 import java.io.PrintWriter;
-import static java.lang.System.out;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-@WebServlet(urlPatterns = {"/JSONCliente"})
-public class JSONCliente extends HttpServlet {
+@WebServlet(name = "JSONPost", urlPatterns = {"/JSONPost"})
+public class JSONPost extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -26,26 +23,17 @@ public class JSONCliente extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
-        String data = request.getParameter("data");
-        System.out.println("Fui chamado");
-        if(data.equals("1")){           //Para Inserir
-            String nome = request.getParameter("nome");
-            Cliente c = new Cliente(nome, "0");
-            JDBCClienteDAO JDBCc = new JDBCClienteDAO();
-            JDBCc.inserir(c);
-            out.println("funcionou");
-        }else if(data.equals("2")){     //Para buscar
-            
-        }else if(data.equals("3")){     //Para Listar
-            
-        }else if(data.equals("4")){     //Para Alterar
-            
-        }else if(data.equals("5")){     //Para Excluir
-            
-        }
         try (PrintWriter out = response.getWriter()) {
             /* TODO output your page here. You may use following sample code. */
-            out.println(data);
+            out.println("<!DOCTYPE html>");
+            out.println("<html>");
+            out.println("<head>");
+            out.println("<title>Servlet JSONPost</title>");            
+            out.println("</head>");
+            out.println("<body>");
+            out.println("<h1>Servlet JSONPost at " + request.getContextPath() + "</h1>");
+            out.println("</body>");
+            out.println("</html>");
         }
     }
 

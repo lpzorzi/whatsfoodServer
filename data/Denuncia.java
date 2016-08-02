@@ -11,9 +11,7 @@ public class Denuncia {
         this.PostID = PostID;
     }
 
-    public Denuncia() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
+    public Denuncia() {    }
 
     public String getID() {
         return ID;
