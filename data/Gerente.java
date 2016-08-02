@@ -11,9 +11,7 @@ public class Gerente {
         this.senha = senha;
     }
 
-    public Gerente() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
+    public Gerente() {    }
 
     public String getID() {
         return ID;

@@ -5,11 +5,13 @@ import com.whatsfood.DAO.JDBCClienteDAO;
 import java.io.IOException;
 import java.io.PrintWriter;
 import static java.lang.System.out;
+import java.util.List;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import com.google.gson.Gson;
 
 @WebServlet(urlPatterns = {"/JSONCliente"})
 public class JSONCliente extends HttpServlet {
@@ -26,26 +28,35 @@ public class JSONCliente extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
-        String data = request.getParameter("data");
+        String data = "1";
+        data = request.getParameter("data");
         System.out.println("Fui chamado");
+        JDBCClienteDAO JDBCc = new JDBCClienteDAO();
+        List<Cliente> clientes = null;
+        Gson gson = new Gson();
+        Cliente c;
         if(data.equals("1")){           //Para Inserir
             String nome = request.getParameter("nome");
-            Cliente c = new Cliente(nome, "0");
-            JDBCClienteDAO JDBCc = new JDBCClienteDAO();
+            c = new Cliente(nome , "0");
             JDBCc.inserir(c);
-            out.println("funcionou");
         }else if(data.equals("2")){     //Para buscar
-            
+            String ID = request.getParameter("ID");
+            c = JDBCc.buscar(Integer.parseInt(ID));
+            clientes.add(c);
+            String json = gson.toJson(clientes);
+            out.print(json);
         }else if(data.equals("3")){     //Para Listar
-            
+            clientes = JDBCc.listar();
+            String json = gson.toJson(clientes);
+            out.print(json);
         }else if(data.equals("4")){     //Para Alterar
-            
+            c = new Cliente();
+            c.setID(request.getParameter("ID"));
+            c.setNome(request.getParameter("nome"));
+            JDBCc.alterar(c);
         }else if(data.equals("5")){     //Para Excluir
-            
-        }
-        try (PrintWriter out = response.getWriter()) {
-            /* TODO output your page here. You may use following sample code. */
-            out.println(data);
+            String ID = request.getParameter("ID");
+            JDBCc.remover(Integer.parseInt(ID));
         }
     }
 

@@ -19,9 +19,7 @@ public class Post {
         this.clienteID = clienteID;
     }
 
-       public Post() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
+       public Post() {    }
 
  public String getComentario() {
         return comentario;

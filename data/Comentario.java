@@ -13,8 +13,7 @@ public class Comentario {
         this.postID = postID;
     }
 
-    public Comentario() {
-    }
+    public Comentario() {    }
 
     public String getID() {
         return ID;
